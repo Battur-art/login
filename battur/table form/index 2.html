@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem solving</title>
+  </head>
+  <body></body>
+  <script>
+    const people = [
+      { id: 1, name: "DORJ", age: 19 },
+      { id: 2, name: "BOLD", age: 13 },
+      { id: 3, name: "BAT", age: 15 },
+      { id: 4, name: "TURUU", age: 20 },
+      { id: 15, name: "SUMBEE", age: 23 },
+    ];
+
+    people.map((person) => {
+      console.log(
+        `Сайн байна уу, ${person.name}. Таны нас ${person.age} мөн үү?`
+      );
+    });
+    const users = [
+        { id: 11, name: "bat", age: 23, group: "editor" },
+        { id: 47, name: "sukhee", age: 28, group: "admin" },
+        { id: 75, name: "bymbaa", age: 34, group: "editor" },
+        { id: 33, name: "bandia", age: 19, group: "admin" },
+        { id: 45, name: "tumee", age: 27, group: "editor" },
+        ];
+
+        const updatedUsers = users.map(user => ({
+        ...user,
+        name: user.name.charAt(0).toUpperCase() + user.name.slice(1)
+        }));
+
+        console.log(updatedUsers);  
+        myMap(['5', '7', '22'], parseInt)
+        myMap(['5', '7', '22'], Number)
+        myMap(['5', '7', '22'], x => Number(x) * 2)
+        function myMap(array, callback) {
+        const result = [];
+        for (let i = 0; i < array.length; i++) {
+            result.push(callback(array[i], i, array));
+        }
+        return result;
+        }
+        console.log(myMap(['5', '7', '22'], parseInt)); 
+        console.log(myMap(['5', '7', '22'], Number));    
+        console.log(myMap(['5', '7', '22'], x => Number(x) * 2));  
+
+            
+    
+
+
+    
+  </script>
+</html>

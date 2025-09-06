@@ -1,0 +1,60 @@
+section {
+   background: #790909;
+    background: linear-gradient(90deg, rgba(121, 9, 9, 1) 35%, rgb(84, 87, 87) 100%);
+    width: 800px;
+    height: 1000px;
+    margin: 0 auto;
+    position: relative;
+    color: aliceblue;
+}
+.headSection {
+    padding: 10px;
+}
+.img-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-container img {
+    position: absolute;
+    bottom: 0;
+    height: 900px;
+}
+.mastHead {
+    font-size: 200px;
+    margin: auto;
+    margin-left: 80px;
+    margin-bottom: 10px;
+}
+.magazineDeck {
+    margin-left: 590px;
+    color: yellow;
+}
+.lead {
+    padding: 20px;
+}
+#Ovid {
+    color: yellow;
+    width: 30px;
+}
+img {
+    position: absolute;
+    bottom: 10px;
+}
+#lead {
+    position: absolute;
+    bottom: 200px;
+    width: 150px;
+
+}
+.lorem {
+    position: absolute;
+    bottom: 100px;
+    width: 100px;
+}

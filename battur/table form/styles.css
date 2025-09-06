@@ -1,0 +1,16 @@
+
+h1 {color: blue;
+}
+.head {color: blueviolet;
+}
+p {color: rgb(90, 43, 131);
+}
+body {
+text-align: center;
+}
+.text {
+border-style: solid;
+border-color: blue green pink purple;
+padding: 10px 300px;
+border-width: 16px;
+}

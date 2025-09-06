@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Life Hub – Оюутны Амьдрал</title>
+  <meta name="theme-color" content="#22d3ee" />
+  <link rel="stylesheet" href="hackathon.css">
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <label class="brand" for="menuToggle">
+        <div class="badge">SL</div>
+        <span>Student Life Hub</span>
+      </label>
+      <input id="menuToggle" type="checkbox" aria-label="toggle menu"/>
+      <nav class="links">
+        <a href="#hero">Нүүр</a>
+        <a href="#challenges">Асуудлууд</a>
+        <a href="#solutions">Шийдлүүд</a>
+        <a href="#tools">Багажууд</a>
+        <a href="#tips">Зөвлөмж</a>
+        <a href="#contact" class="btn btn-primary" style="padding:8px 12px">Холбогдох</a>
+      </nav>
+      <div class="controls">
+        <button class="icon-btn" id="themeBtn" title="Light/Dark"></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section" id="hero">
+    <div class="hero">
+      <div>
+        <span class="tag">🎓 Оюутны амьдрал • 💡 Шийдлүүд</span>
+        <h1>Сургууль, ажил, амьдралаа ухаалгаар зохицуулъя.</h1>
+        <p class="lead">Эндээс төсөв, цагийн хуваарь, сурах арга, эрүүл мэнд, ажил-ирээдүйн жишиг шийдлүүдийг нэг дороос ав.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#solutions">Шийдлийг үзэх</a>
+          <a class="btn btn-ghost" href="#tools">Туслах багажууд</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img"><img src="oyutan.jpeg" alt=""></div>
+        <div class="body">
+          <h3>Амьдралын индикатор</h3>
+          <p class="muted">7 хоногийн зорилгын гүйцэтгэл, Pomodoro минут, төсвийн үлдэгдэл.</p>
+          <div class="tool">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+              <div>
+                <small class="muted">7 хоногийн зорилт</small>
+                <div><strong id="kpiGoals">—</strong> <span class="muted">%</span></div>
+              </div>
+              <div>
+                <small class="muted">Pomodoro</small>
+                <div><strong id="kpiPomo">—</strong> <span class="muted">мин</span></div>
+              </div>
+              <div>
+                <small class="muted">Төсвийн үлдэгдэл</small>
+                <div><strong id="kpiBudget">—</strong> <span class="muted">₮</span></div>
+              </div>
+            </div>
+          </div>
+          <p class="muted"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="challenges" class="section">
+    <h2>Оюутнуудын түгээмэл асуудлууд</h2>
+    <div class="grid">
+        <article class="card"><div class="img"><img src="download (2).jpeg" alt=""></div><div class="body"><h3>1) Мөнгөний хомсдол</h3><p class="muted">Төлбөр, байр, хоол—сарын төсөв дутагдах.</p></div></article>
+        <article class="card"><div class="img"><img src="getty_931823610_200013331653767258275_366996.jpg" alt=""></div><div class="body"><h3>2) Цагийн менежмент</h3><p class="muted">Хичээл, ажил, гэр бүл, амралт тэнцвэргүй.</p></div></article>
+        <article class="card"><div class="img"><img src="download (1).jpeg" alt=""></div><div class="body"><h3>3) Сэтгэл зүй, стресс</h3><p class="muted">Дарамт, шалтгаангүй шантрал, бэлтгэлгүй шалгалт.</p></div></article>
+        <article class="card"><div class="img"><img src="89a7d8_MPA_PHOTO_2017-5782_x974.jpg" alt=""></div><div class="body"><h3>4) Байр, хоол</h3><p class="muted">Хангамж муу, эрүүл бус хооллолт.</p></div></article>
+        <article class="card"><div class="img"><img src="consciousness-709143-400x300.jpg" alt=""></div><div class="body"><h3>5) Сурах арга</h3><p class="muted">Хичээлийн ачаалал, ойлголт муу, ялгарахгүй тэмдэглэл.</p></div></article>
+        <article class="card"><div class="img"><img src="download.jpeg" alt=""></div><div class="body"><h3>6) Туршлага, дадлага</h3><p class="muted">CV хоосон, сүлжээ бага.</p></div></article>
+    </div>
+  </section>
+
+  <section id="solutions" class="section">
+    <h2>Шийдлүүд</h2>
+    <p class="lead">Доорх шийдлүүдийг ашиглаад асуудлаа системтэйгээр шийдье.</p>
+    <div class="grid">
+      <article class="card"><div class="img"><img src="images.jpeg" alt=""></div><div class="body"><h3>Zero-based Budget</h3><p class="muted">Орлогын бүр төгрөгт зорилго оноож, дэмий зардлыг таслана.</p><button class="btn btn-primary" data-goto="#budget">Төсөв зохиоё</button></div></article>
+      <article class="card"><div class="img"><img src="TIME-BLOCKING-HEADER.png" alt=""></div><div class="body"><h3>Time Blocking</h3><p class="muted">Өдрийг блокоор төлөвлөж, анхаарал сарнихаас сэргийлнэ.</p><button class="btn btn-primary" data-goto="#planner">Цаг төлөвлөе</button></div></article>
+      <article class="card"><div class="img">🍅</div><div class="body"><h3>Pomodoro</h3><p class="muted">25 мин ажил + 5 мин амралт циклоор төвлөрнө.</p><button class="btn btn-primary" data-goto="#pomodoro">Pomodoro асаая</button></div></article>
+     
+    </div>
+  </section>
+
+  <section id="tools" class="section">
+    <h2>Туслах багажууд</h2>
+
+    <!-- Budget Tool -->
+    <div id="budget" class="card" style="margin-bottom:14px">
+      <div class="img">💸</div>
+      <div class="body tool">
+        <h3>Сарын төсөв тооцоологч</h3>
+        <p class="muted">Орлого, зардлаа оруулаад үлдэгдлээ хараарай. (LocalStorage-д хадгална)</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div>
+            <label>Сарын орлого (₮)</label>
+            <input id="income" type="number" placeholder="800000" />
+          </div>
+          <div>
+            <label>Орон сууц/Дотуур байр (₮)</label>
+            <input id="rent" type="number" placeholder="250000" />
+          </div>
+          <div>
+            <label>Хоол (₮)</label>
+            <input id="food" type="number" placeholder="200000" />
+          </div>
+          <div>
+            <label>Унаа (₮)</label>
+            <input id="transport" type="number" placeholder="50000" />
+          </div>
+          <div>
+            <label>Интернет/Утас (₮)</label>
+            <input id="net" type="number" placeholder="30000" />
+          </div>
+          <div>
+            <label>Бусад (₮)</label>
+            <input id="other" type="number" placeholder="60000" />
+          </div>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <button class="btn btn-primary" id="calcBudget">Тооцоолох</button>
+          <button class="btn btn-ghost" id="saveBudget">Хадгалах</button>
+          <span id="budgetMsg" class="muted"></span>
+        </div>
+        <div style="margin-top:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+          <div><small class="muted">Нийт зардал</small><div><strong id="totalExp">—</strong> ₮</div></div>
+          <div><small class="muted">Үлдэгдэл</small><div><strong id="leftover">—</strong> ₮</div></div>
+          <div><small class="muted">Зардлын хувь</small><div><strong id="expRate">—</strong> %</div></div>
+        </div>
+      </div>
+    </div>
+
+    
+
+  <footer>
+    <div class="foot">
+      <div>
+        <p class="muted">© 2025 Student Life Hub — Оюутнуудад зориулсан нээлттэй прототип.</p>
+      </div>
+      <div>
+        <h4>Холбоос</h4>
+        <p><a href="#solutions">Шийдлүүд</a></p>
+        <p><a href="#tools">Багажууд</a></p>
+        <p><a href="#tips">Зөвлөмж</a></p>
+      </div>
+      <div>
+        <h4>Нууцлал</h4>
+        <p class="muted">Мэдээллийг зөвхөн таны төхөөрөмж дээр хадгална (LocalStorage).</p>
+      </div>
+    </div>
+  </footer>
+  <script src="hackathon.js"></script>
+  
+</body>
+</html>

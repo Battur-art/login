@@ -1,0 +1,65 @@
+img {
+    width: 30px;
+    height: 30px;
+}
+body {
+    margin: 0%;
+}
+header {
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    background-size: cover;
+    padding: 30px;
+    display: flex;
+    position: sticky;
+}
+.iconContainer {
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+    width: 200px;
+    height: 50px;
+    
+}
+a {
+    text-decoration: none;
+    padding: 30px;
+    color: black;
+    font-size: large;
+    
+}
+.head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 100px;
+}
+section {
+    background-color:  #f6f6f6 ;
+    margin: 0px;
+}
+.slide-1 {
+    width: 400px   ;
+}   
+.slide-1 img {
+    width: 400px;
+    height: auto;
+}
+section {
+    display: flex;
+}
+.slide {
+    width: 300px;
+    margin:200px;
+}
+button {
+    border-radius: 40px;
+    background-color: rgb(9, 27, 184);
+    padding: 20px;
+    color: #f6f6f6;
+}
+#item2 {
+    font-size: xx-large;
+    font-weight: 900;
+}

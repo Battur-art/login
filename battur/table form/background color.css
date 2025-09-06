@@ -1,0 +1,23 @@
+main div {
+    
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: solid black 1px;
+    
+}
+#div1 :hover {
+    background: linear-gradient(90deg,#f61b10,#ef0963);
+    background-color: #ef0963;
+    color: white;   
+    
+}
+main {
+    display: flex;
+    margin-top: 300px;
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: center;
+}
+
+    

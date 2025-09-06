@@ -1,0 +1,49 @@
+.row {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.row img, .row1 img, .row2 img   {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.row1 {
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.row2 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.item {
+    position: relative;
+}
+.item p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    color: black;
+    opacity: 0;
+    margin: 0;
+    padding: 20px;
+    height: 0;
+    transition: all ease .3s;
+    display: flex;
+    align-items: center;
+} 
+
+.item:hover p {
+    opacity: .7;
+    height: 40px;
+}

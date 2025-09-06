@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="Name">Name</label>
+        <input type="text" name="" id="">
+    </div>
+    <div>
+        <label for="Price">Price</label>
+        <input type="text" name="" id="">
+    </div>
+    <div>
+        <label for="">Price</label>
+        <input type="text" name="" id="">
+    </div>
+    <button>
+        Add item 
+    </button>
+    <p id="personGreet"></p>
+    <p id="studentGreet"></p>
+    <p id="studentStudy"></p>
+
+    <div id="totals"></div>
+    <div id="printInventory"></div>
+
+
+    <script>
+        //step1
+        class Person {
+            constructor(name, age, gender) {
+                this.name = name;
+                this.age = age;
+                this.gender= gender;
+            }
+       
+        greet() {
+            return(`hello, my name is ${this.name},`);
+        }
+        }
+        //step2
+        class Student extends Person {
+            constructor(name, age, gender, studentId) {
+                super(name, age, gender); 
+                this.studentId = studentId;
+            }
+
+            study() {
+                return (`${this.name} is studying.`);
+                console.log(`${this.name} is studying.`);
+        }
+        }
+        const person = new Person("Alice", 30, "Female");
+        person.greet();
+        const student = new Student("Bob", 20, "Male", "S12345")
+        student.greet()
+        student.study() 
+        document.getElementById("personGreet").innerHTML = person.greet();
+        document.getElementById("studentGreet").innerHTML = student.greet();
+        document.getElementById("studentStudy").innerHTML = student.study();
+        //Todo2
+        class Item {
+            constructor(name, price, quantity) {
+                this.name = name;
+                this.price = price;
+                this.quantity = quantity;
+            }
+
+            getTotalPrice() {
+                return this.price * this.quantity;
+            }
+        }
+
+        class Inventory extends Item{
+            constructor(name, price, quantity) {
+                super(name, price, quantity);
+                this.items = new Array();
+            }
+
+            addItem(item) {
+                this.items.push(item);
+            }
+
+            removeItem(itemName) {
+                let index = this.items.indexOf(this.items.find(item => item.name === itemName));
+                delete this.items[index];
+            }
+
+            getInventoryValue() {
+                let total = 0;
+                this.items.map(item => total += item.getTotalPrice());
+                return total;
+            }
+
+            printInventory() {
+                let printValues = "";
+                this.items.forEach(item => printValues += Object.values(item).toString());
+                return printValues;
+            }
+        }
+
+        const item1 = new Item('Laptop', 1200, 2);
+        const item2 = new Item('Mouse', 25, 10);
+        const item3 = new Item('Keyboard', 75, 5);
+        const item4 = new Item("name4", 4, 4);
+        const item5 = new Item("name5", 5, 5);
+
+        const inventory = new Inventory();
+        inventory.addItem(item1);
+        inventory.addItem(item2);
+        inventory.addItem(item3);
+        inventory.addItem(item4);
+        inventory.addItem(item5);
+
+        inventory.removeItem("name5");
+
+        document.getElementById("totals").innerHTML = `total: ${inventory.getInventoryValue()}`;
+        document.getElementById("printInventory").innerHTML = inventory.printInventory();
+    </script>
+</body>
+</html>

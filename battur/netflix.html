@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Netflix</title>
+  <link rel="stylesheet" href="netflix.css">
+</head>
+<body>
+  <header>
+      <nav>
+     
+      <h1 class="logo">NETFLIX</h1>
+   
+      <a href="#">home</a>
+      <a href="#">series</a>
+      <a href="#">movie</a>
+      <a href="#">Latest content</a>  
+      <a href="#">My Wishlist</a>
+      <div class="searchBar">
+        <i class="searchIcon">🔍</i>
+        <input type="text" id="searchInput" placeholder="Search movies..." />
+      </div>
+    </nav>
+    
+  </header>
+  <div class="divContainer">
+    <iframe 
+  
+    src="https://www.youtube.com/embed/EUJlIXzfKYI?playlist=EUJlIXzfKYI&autoplay=1&mute=1&loop=1&si=JTepeabZZhCIbs8x" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen;" 
+    referrerpolicy="strict-origin-when-cross-origin" id="backgroundVideo"></iframe>
+  </div>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+       
+    </section>
+
+    <section class="section">
+      <h2>Anime</h2>
+      <div class="row">
+        <div class="scroller" id="ghibli-row"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>More picks</h2>
+      <div class="row">
+        <div class="scroller" id="ghibli-row-2"></div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- preview modal -->
+  <div class="modal" id="modal">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="close" id="closeBtn">✕</button>
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <img id="modalImg" src="" alt="poster"/>
+        <div class="modal-body">
+          <h2 id="modalTitle">Title</h2>
+          <p id="modalMeta" style="color:var(--muted);margin:6px 0"></p>
+          <p id="modalDesc" style="color:var(--muted);max-height:180px;overflow:auto"></p>
+          <div class="progress" aria-hidden style="margin-top:14px;">
+            <div class="bar" id="progBar" style="width:0%"></div>
+          </div>
+          <div style="color:var(--muted);font-size:13px;margin-top:6px" id="progText"></div>
+        </div>
+      </div>
+    </div>
+  </div>  
+      <footer>
+        <p>&copy; 2025 Миний Веб. Copy hiiseniin alna.</p>
+        <p>
+          <a href="instagram">Facebook</a> 
+          <a href="#">Instagram</a> 
+          <a href="#">Contact</a>
+        </p>
+      </footer>
+   
+  <script>
+    // API endpoint you gave
+    const API = 'https://ghibliapi.vercel.app/films';
+
+    // helper: safe image pick (some entries include 'image' or 'movie_banner') 
+    function pickImage(item){
+      if(item.image) return item.image;
+      if(item.movie_banner) return item.movie_banner;
+      // fallback: use a poster-like Unsplash with the title as query (may return varied results)
+      return `https://source.unsplash.com/collection/1127163/800x450?sig=${encodeURIComponent(item.id||item.title)}`;
+    }
+
+    function makeCard(item){
+      const div = document.createElement('div');
+      div.className='card';
+      const imageUrl = pickImage(item);
+      div.innerHTML = `             
+        <div class="badge">㊑ぁ</div>
+        <img loading="lazy" src="${imageUrl}" alt="${escapeHtml(item.title)}" />
+        <div class="meta">
+          <div class="title">${escapeHtml(item.title)}</div>
+          <div class="sub">${escapeHtml(item.release_date || item.original_title || '')} • ${escapeHtml(item.director || '')}</div>
+        </div>`;
+      div.onclick = ()=>openModal(item);
+      return div;
+    }
+
+    // escape small HTML in titles/descriptions to avoid injection if content odd
+    function escapeHtml(str){
+      if(!str) return '';
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;"); 
+    }
+
+    
+  // modal behavior (preview card)
+  const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalMeta = document.getElementById('modalMeta');
+    const progBar = document.getElementById('progBar');
+    const progText = document.getElementById('progText');
+
+    function openModal(item){
+      const img = pickImage(item);
+      modalImg.src = img;
+      modalTitle.textContent = item.title || '';
+      modalMeta.textContent = `${item.release_date || ''} • ${item.director || ''}`;
+      modalDesc.textContent = item.description || '';
+      // simulate progress for demo (random)
+      const total = 100; // pretend total minutes
+      const watched = Math.floor(Math.random()*total);
+      const percent = Math.round((watched/total)*100);
+      progBar.style.width = percent+'%';
+      progText.textContent = `${watched} minutes out of ${total} minutes`;
+      modal.classList.add('open');
+    }
+
+    document.getElementById('closeBtn').onclick = ()=>modal.classList.remove('open');
+    modal.onclick = (e)=>{ if(e.target===modal) modal.classList.remove('open') }
+
+    let allMovies = [];
+
+      async function loadGhibli(){
+        try{
+          const res = await fetch(API);
+          if(!res.ok) throw new Error('API error '+res.status);
+          const data = await res.json();
+          allMovies = data;
+          showMovies(data);
+        }catch(err){
+          console.error(err);
+        }
+      }
+
+      function showMovies(list){
+        const row = document.getElementById('ghibli-row');
+        const row2 = document.getElementById('ghibli-row-2');
+        row.innerHTML = '';
+        row2.innerHTML = '';
+        list.slice(0,10).forEach(item=>row.appendChild(makeCard(item)));
+        list.slice(10,20).forEach(item=>row2.appendChild(makeCard(item)));
+      }
+
+      document.getElementById('searchInput').addEventListener('input', function(){
+        const query = this.value.toLowerCase();
+        const filtered = allMovies.filter(movie =>
+          movie.title.toLowerCase().includes(query)
+        );
+        showMovies(filtered);
+      });
+
+loadGhibli();
+  </script>
+</body>
+</html>

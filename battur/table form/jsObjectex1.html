@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Ex1:
+        let car = {
+            brand: "koenigsegg",
+            name: "jesko",
+            year: "2020",
+        };
+        console.log("brand", car.brand);
+        console.log("name", car.name);
+        console.log("year", car.year);
+        //Ex2:
+        let person = {
+            firstName: "Battur",
+            lastName: "Bayraa",
+        age: 15
+        };
+        delete person.age;
+        person.city = "Ulaanbaatar";
+        person.position = "Engineer";
+        person.isMarried = false;
+        console.log(person);
+        //Ex3:
+        let person2 = {
+             firstName2: "Battur",
+             lastName2: "Biagnaa",
+             age: 16,
+         getFullName: function() {
+             return this.firstName2 + " " + this.lastName2;
+         }
+        };
+        console.log(person2.getFullName()); // "Battur Biagnaa"
+        //Ex4:
+        let movie = {
+             title: "Interstellar",
+             director: "Christopher Nolan",
+             year: 2014,
+             genre: "Sci-Fi"
+        };
+        function getKeysAndValues(obj) {
+        let keys = Object.keys(obj);
+        let values = Object.values(obj);
+        return {
+              keys: keys,
+        };
+        }
+        let result = getKeysAndValues(movie);
+        console.log(result.keys);   
+        console.log(result.values);
+        
+        //Ex5:
+        let address = {
+              street: "123 Main St",
+              city: "Ulaanbaatar",
+              zipCode: "15160" 
+        }; 
+        let student = {
+              name: "Nomin",
+              age: 17,
+              address: address,
+              getFullAddress: function() {
+            return this.address.street + ", " + this.address.city + ", " + this.address.zipCode;    
+         }
+         };
+        console.log(student.getFullAddress()); 
+       //ex6
+       const user = {
+            name:'Zoro',
+            age:'19',
+            greet: function() {
+                return `Hello, my name is ${this.name}`
+            },
+        };
+        console.log(user.greet());
+        const updateName = function(name){
+            return user.name = name;
+        }
+        user.updateName = updateName;
+        console.log("ex6:", user.updateName("Blog"), user.greet())
+        //ex7
+        const book1 = {
+            title:'evergarden',
+            author:'myself',
+            year:'2000',
+        }
+        const book2 = {
+            author:'uyguygu',
+            year:'2001',
+            description:'very sad movie inspired by someone',
+            category:'fantasy'
+        }
+        const mergeBooks =function(book1, book2){
+           return Object.assign(book1, book2)
+        }
+        console.log(mergeBooks(book1, book2));
+        //ex8
+        const config = {
+            host:'myself',
+            port:'notme',
+            protocol:'mine'
+        }
+        Object.freeze(config.protocol);
+        config.protocol = 'notmine';
+        console.log("freeze", config);
+
+        Object.seal(config);
+        config.host = 'notmyself';
+        console.log("seal", config);
+        //ex9
+        const userNew = {
+            name:'John doe',
+            age:'20',
+            gender:'male',
+        }
+        const getKeysAndValues2 = function() {
+            return {
+                keys: Object.keys(userNew),
+                values: Object.values(userNew)
+            }
+        };
+        userNew.getKeysAndValues = getKeysAndValues;
+
+        console.log("Ex9:", userNew.getKeysAndValues());
+       // ex10
+      const studentA = {
+        1: { name: "Bolor", grade: 95 },
+        2: { name: "Anu", grade: 87 },
+        3: { name: "Temuujin", grade: 78 },
+        4: { name: "Delger", grade: 83 },
+        5: { name: "Zolzaya", grade: 92 },
+      };
+
+      // average
+      const calculateAverage = function () {
+        const total =
+          studentA[1].grade +
+          studentA[2].grade +
+          studentA[3].grade +
+          studentA[4].grade +
+          studentA[5].grade;
+        return total / 5;
+      };
+      console.log("Дундаж оноо:", calculateAverage());
+
+      // above average
+      const findAboveAverageStudents = function () {
+        const avg = calculateAverage();
+        const mm = [];
+
+        if (studentA[1].grade > avg) {
+          mm.push(studentA[1].name);
+        }
+        if (studentA[2].grade > avg) {
+          mm.push(studentA[2].name);
+        }
+        if (studentA[3].grade > avg) {
+          mm.push(studentA[3].name);
+        }
+        if (studentA[4].grade > avg) {
+          mm.push(studentA[4].name);
+        }
+        if (studentA[5].grade > avg) {
+          mm.push(studentA[5].name);
+        }
+
+        return mm;
+      };
+      console.log("Above average students:", findAboveAverageStudents());
+
+      // highest score
+      const FindHighestScoreStudent = function () {
+        let maxGrade = 0;
+        let topStudent = "";
+
+        if (studentA[1].grade > maxGrade) {
+          maxGrade = studentA[1].grade;
+          topStudent = studentA[1].name;
+        }
+        if (studentA[2].grade > maxGrade) {
+          maxGrade = studentA[2].grade;
+          topStudent = studentA[2].name;
+        }
+        if (studentA[3].grade > maxGrade) {
+          maxGrade = studentA[3].grade;
+          topStudent = studentA[3].name;
+        }
+        if (studentA[4].grade > maxGrade) {
+          maxGrade = studentA[4].grade;
+          topStudent = studentA[4].name;
+        }
+        if (studentA[5].grade > maxGrade) {
+          maxGrade = studentA[5].grade;
+          topStudent = studentA[5].name;
+        }
+
+        return "Хамгийн өндөр оноо бол " + maxGrade + ", энэ нь " + topStudent + " хэмээх сурагчийн амжилт юм.";
+      };
+      console.log(FindHighestScoreStudent());
+
+      // lowest score
+      const findLowestScoreStudent = function () {
+        let minGrade = 100;
+        let lowStudent = "";
+
+        if (studentA[1].grade < minGrade) {
+          minGrade = studentA[1].grade;
+          lowStudent = studentA[1].name;
+        }
+        if (studentA[2].grade < minGrade) {
+          minGrade = studentA[2].grade;
+          lowStudent = studentA[2].name;
+        }
+        if (studentA[3].grade < minGrade) {
+          minGrade = studentA[3].grade;
+          lowStudent = studentA[3].name;
+        }
+        if (studentA[4].grade < minGrade) {
+          minGrade = studentA[4].grade;
+          lowStudent = studentA[4].name;
+        }
+        if (studentA[5].grade < minGrade) {
+          minGrade = studentA[5].grade;
+          lowStudent = studentA[5].name;
+        }
+
+        return "The lowest point is " + minGrade + ", this is " + lowStudent + " those student's points.";
+      };
+      console.log(findLowestScoreStudent());
+
+     </script>
+</body>
+</html>
